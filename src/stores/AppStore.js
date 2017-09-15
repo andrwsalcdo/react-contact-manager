@@ -7,6 +7,11 @@ const CHANGE_EVENT = 'change';
 // define the contacts store as empty array
 let _contacts = []; 
 
+function setContacts(contacts) {
+    _contacts = contacts; 
+}
+
+
 // Define public event listeners & getters that the UI 
 // uses to listen for changes & retrieve the store
 class AppStoreClass extends EventEmitter {
@@ -33,7 +38,12 @@ const AppStore = new AppStoreClass();
 
 AppStore.dispatchToken = AppDispatcher.register(action => {
     switch(action.actionType){
-        // receive, delete, save contact actions
+        case AppConstants.RECEIVE_CONTACTS: 
+            setContacts(action.contacts); 
+            AppStore.emitChange(); 
+            break
+        
+        default: 
     }
 }); 
 
