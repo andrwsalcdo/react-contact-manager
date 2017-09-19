@@ -1,7 +1,15 @@
 import React, { Component } from 'react'
 import AppActions from '../actions/AppAction'
 import AppStore from '../stores/AppStore'
+import { Grid, Row, Col, ListGroup } from 'react-bootstrap'
+import ContactListItem from './ContactListItem'
 
+
+function getContactListItem(contact) {
+    return (
+        <ContactListItem key={contact.id} contact={contact} />
+    ); 
+}
 
 class Contacts extends Component {
     constructor(props){
@@ -26,17 +34,27 @@ class Contacts extends Component {
     onChange = () => {
         this.setState({
             contacts: AppStore.getContacts()
-        }, () => {
-            console.log(this.state);
         }); 
     }
     
 
     render() {
+        let contactListItems; 
+        if(this.state.contacts) {
+            contactListItems = this.state.contacts.map(contact =>
+                getContactListItem(contact)
+            )
+        }
         return (
-            <div>
-                Contacts 
-            </div>
+            <Grid>
+                <Row>
+                    <Col xs={12} md={12} lg={12}>
+                        <ListGroup>
+                            {contactListItems}
+                        </ListGroup>
+                    </Col>
+                </Row>
+            </Grid>
         );
   }
 }
