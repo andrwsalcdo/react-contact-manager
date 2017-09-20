@@ -28,7 +28,7 @@ class AddContact extends Component {
       if(this.state.newContact.name === '') {
           alert('Name is required'); 
       } else {
-          // save contact action 
+          // save contact action  
           AppActions.saveContact(this.state.newContact); 
           //clear the form
           this.setState({
