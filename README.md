@@ -2,4 +2,7 @@
 
 A simple contact manager app built with React, Flux architecture, and bootstrap. 
 
-more to follow..
+Demo Url: [http://react-contact-manager.surge.sh/](http://react-contact-manager.surge.sh/)
+
+![Imgur](https://i.imgur.com/5L4EOYH.gif)
+
